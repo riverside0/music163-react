@@ -67,3 +67,43 @@
 // }
 // let mybind = testMybind.mybind([1],2)
 // console.log(mybind(3,4)); 
+
+//instanceof
+// function mytInstanceof(left,right){
+//     let leftValue = left._proto_
+//     let rightValue = right.prototype
+//     while(leftValue !== null){
+//         if(leftValue === right.prototype)
+//             return true
+//         else
+//             leftValue = leftValue._proto_
+//     }
+// }
+// console.log( mytInstanceof(new Array(),new Object()) );
+
+//Object.create()
+// function mycreacte(obj){
+//      let F = function(){}
+//      F.prototype = obj._proto_
+//      return new F()
+// }
+
+//new
+// function mynew(fn){
+//     return function(){
+//         let obj = {}
+//         obj._proto_=fn.prototype
+//         fn.call(obj,...arguments)
+//         return obj
+//     }
+// }
+
+//深拷贝
+// function deepCopy(obj){
+//     let copy = obj instanceof Array === 'array' ? [] : {}
+//     for(let i in obj){
+//         if(obj.hasOwnProperty(i))
+//             copy[i]= typeof obj[i] === 'object' ? deepCopy(obj[i]) : obj[i]
+//     }
+//     return copy
+// }
