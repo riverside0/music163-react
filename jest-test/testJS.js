@@ -107,3 +107,65 @@
 //     }
 //     return copy
 // }
+
+//settimeout模拟setiterval 
+//callee 是 arguments 对象的一个属性。它可以用于引用该函数的函数体内当前正在执行的函数
+
+    // setTimeout(function(){console.log(1);setTimeout(arguments.callee, 500);}, 500);
+
+//继承
+// function superType(name){
+//     this.name = name
+// }
+
+// function subType(name,age){
+//     superType.call(this,name)
+//     this.age=age
+// }
+// (function(superType,subType){
+//     let prototype = Object.create(superType.prototype)//创建原型
+//     prototype.constructor = subType//增强原型
+//     subType.prototype = prototype//赋值原型
+// })(superType,subType)
+
+// console.log(new subType('a',1) instanceof superType)
+
+//EventEmitter
+// class EventEmitter{
+//     constructor(){
+//         this.events = this.events||new Map()
+//     }
+//     addListener(type,fn){
+//         if(!this.events.has(type))
+//             this.events.set(type,fn)
+//     }
+//     emit(type){
+//         let handle = this.events.get(type)
+//             handle.apply(this,[...arguments].slice(1))
+//     }
+// }
+
+// let arr = [1, 2, [3, 4], [5, {b:2}, [{a:1}, 8, 9]]];
+// function flat(arr){
+//     let res = []
+//     for(let item of arr){
+//         if(Array.isArray(item))
+//             res.push(...flat(item))
+//         else
+//             res.push(item)
+//     }
+//     return res
+// }
+// function flat(arr){
+//     let res = []
+//     let stack = [].concat(arr)
+//     while(stack.length != 0){
+//         let item = stack.pop()
+//         if(Array.isArray(item))
+//             stack.push(...item)
+//         else
+//             res.unshift(item)
+//     }
+//     return res
+// }
+// console.log(flat(arr))
